@@ -7,15 +7,20 @@
   };
 
   outputs = inputs: {
-      wallpapers = inputs.haumea.lib.load {
-        src = ./wallpapers;
-        loader = inputs.haumea.lib.matchers.extension ["png" "jpg" "jpeg"];
-        inputs = {inherit (inputs.nixpkgs) lib;};
-      };
-      themes = inputs.haumea.lib.load {
-        src = ./themes;
-        loader = inputs.haumea.lib.matchers.extension ["yaml"];
-        inputs = {inherit (inputs.nixpkgs) lib;};
+    wallpapers = inputs.haumea.lib.load {
+      src = ./wallpapers;
+      loader = inputs.haumea.lib.matchers.extension ["png" "jpg" "jpeg"];
+      inputs = {inherit (inputs.nixpkgs) lib;};
+    };
+    themes = inputs.haumea.lib.load {
+      src = ./themes;
+      loader = inputs.haumea.lib.matchers.extension ["yaml"];
+      inputs = {inherit (inputs.nixpkgs) lib;};
+    };
+    gifs = inputs.haumea.lib.load {
+      src = ./gifs;
+      loader = inputs.haumea.lib.matchers.always;
+      inputs = {inherit (inputs.nixpkgs) lib;};
     };
   };
 }
