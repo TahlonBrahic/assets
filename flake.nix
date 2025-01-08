@@ -9,18 +9,23 @@
   outputs = inputs: {
     wallpapers = inputs.haumea.lib.load {
       src = ./wallpapers;
-      loader = inputs.haumea.lib.matchers.extension ["png" "jpg" "jpeg"];
-      inputs = {inherit (inputs.nixpkgs) lib;};
+      loader = [
+        (inputs.haumea.lib.matchers.always inputs.haumea.lib.loaders.path)
+      ];
     };
+
     themes = inputs.haumea.lib.load {
       src = ./themes;
-      loader = inputs.haumea.lib.matchers.extension ["yaml"];
-      inputs = {inherit (inputs.nixpkgs) lib;};
+      loader = [
+        (inputs.haumea.lib.matchers.always inputs.haumea.lib.loaders.path)
+      ];
     };
+
     gifs = inputs.haumea.lib.load {
       src = ./gifs;
-      loader = inputs.haumea.lib.matchers.always;
-      inputs = {inherit (inputs.nixpkgs) lib;};
+      loader = [
+        (inputs.haumea.lib.matchers.always inputs.haumea.lib.loaders.path)
+      ];
     };
   };
 }
